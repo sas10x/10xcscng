@@ -1,0 +1,21 @@
+<div class="container" id="container">
+	<div class="form-container sign-in-container">
+		<form #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
+			<h1>Sign in</h1>
+			<div class="social-container">
+            </div>
+            <input type="email" class="form-control" #Email="ngModel" name="Email" [(ngModel)]="formModel.Email" placeholder="Email" required>
+            <input type="password" class="form-control" #Password="ngModel" name="Password" [(ngModel)]="formModel.Password" placeholder="Password" required>
+            <button type="submit" [disabled]="form.invalid">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp" (click)="signup()">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>

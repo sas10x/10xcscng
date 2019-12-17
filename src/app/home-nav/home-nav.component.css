@@ -1,0 +1,92 @@
+.nav {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.nav.scrolled {
+    background-color: #fff !important;
+    transition: background-color 300ms linear;
+}
+
+.menu-open {
+    position: absolute;
+    line-height: 60px;
+    left: 1.4em;
+}
+
+.brand span a {
+    position: absolute;
+    line-height: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 4px;
+}
+
+.brand a:hover {
+    text-decoration: none;
+}
+
+.cart {
+    position: absolute;
+    line-height: 60px;
+    right: 1.4em;
+    font-weight: 300;
+}
+.menu {
+    position: fixed;
+    z-index: 2;
+    width: 30%;
+    left: -30%;
+    height: 100vh;
+    background: #fff;
+    border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+@media(max-width: 900px) {
+    .menu {
+          width: 100%;
+          left: -100%;
+    }
+}
+
+.menu-close {
+    position: relative;
+    line-height: 60px;
+    float: right;
+    margin-right: 20px;
+}
+
+.menu ul {
+    list-style: none;
+    position: relative;
+    top: 40%;
+    left: 10%;
+    transform: translate(0%, -50%);
+}
+
+.menu ul li {
+    padding-bottom: 20px !important;
+}
+
+.menu ul li a {
+    font-size: 12px;
+}
+
+.menu ul li a:hover {
+    text-decoration: none;
+}
+
+.media-menu {
+    position: relative;
+    top: 50%;
+}
+
+.media-menu ul li {
+    display: inline-block;
+    padding-right: 10px;
+}
+

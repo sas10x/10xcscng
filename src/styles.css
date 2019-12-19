@@ -7,3 +7,80 @@ html, body {
     font-family: "Larsseit";
     font-weight: lighter;
 }
+
+.size {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    
+  }
+p.label {
+    color: #5f6668;
+    font-size: 1.25rem;
+    margin: 0;
+    width: 125px;
+}
+.size ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+.size ul li {
+    margin-right: 24px;
+    cursor: pointer;
+  }
+.size ul li:last-child {
+    margin-right: 0px;
+    cursor: pointer;
+  }
+.size ul .selected {
+    color: white;
+    position: relative;
+  }
+.size ul .selected:after {
+    content: "";
+    position: absolute;
+    background: #051923;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.media {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    margin-right: 20px;
+}
+
+.media ul {
+    list-style: none;
+}
+
+.media ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+@media(max-width: 900px) {
+    .hero-image {
+          display: none;
+    }
+
+    .media {
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, 0);
+    }
+
+    .media ul {
+          margin-right: 0;
+    }
+}

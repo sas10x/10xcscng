@@ -3,46 +3,52 @@
 <div class="container-fluid">
     <div class="row product-sec">
           <div class="col-lg-6 prod-left">
+              <h3>Deformed Bar</h3>
                 <div class="hero-image">
-                      <img src="images/hero.jpg" class="img wow fadeInUp" alt="">
+                      <img src="assets/img/deformed-bar.jpg">
                 </div>
           </div>
 
           <div class="col-lg-6 prod-right">
                 <div class="prod-opt">
-                      <h3 id="prod-name">Daily Planner 2018/19</h3>
-                      <p id="price">USD $30.00</p>
-
-                      <!-- <div class="input-row"> -->
+                    <div *ngIf="product; else nodata">
+                        <h3 id="prod-name">{{product.name}}</h3>
+                        <p id="price">{{product.price | currency:"PHP "}}</p>
+                    </div>
+                    <ng-template #nodata>
+                        <div class="price-listing">
+                           <span class="noprice">Select GRADE, LENGTH and DIAMETER</span>
+                       </div>
+                     </ng-template>
                             <div class="size">
                                   <p class="label">Grade:</p>
                                   <ul>     
-                                    <li class="selected">S</li>   
-                                    <li>M</li> 
-                                    <li>L</li>   
+                                    <li *ngFor="let grade of grades"
+                                    [class.selected]="grade === selectedGrade"
+                                    (click)="onSelect(grade)">{{grade.name}}</li>     
                                   </ul>
-                              </div>
-                              <div class="size">
-                                <p class="label">Size:</p>
-                                <ul>     
-                                  <li class="selected">S</li>   
-                                  <li>M</li> 
-                                  <li>L</li>   
-                                </ul>
                             </div>
                             <div class="size">
                                 <p class="label">Length:</p>
                                 <ul>     
-                                  <li class="selected">S</li>   
-                                  <li>M</li> 
-                                  <li>L</li>   
+                                    <li *ngFor="let length of lengths"
+                                    [class.selected]="length === selectedLength"
+                                    (click)="onSelect2(length)">{{length.name}}</li>     
+                                  </ul>
+                            </div>
+                            <div class="size">
+                                <p class="label">Diameter:</p>
+                                <ul>
+                                    <li *ngFor="let diameter of diameters"
+                                    [class.selected]="diameter === selectedDiameter"
+                                    (click)="onSelect3(diameter)">{{diameter.name}}</li>     
                                 </ul>
                             </div>
                       <!-- </div> -->
 
                       <br>
 
-                      <div class="add-prod wow fadeInUp" data-wow-delay="1.1s">
+                      <div class="add-prod">
                             <a href="#">Add to Quote</a>
                       </div>
                 </div>

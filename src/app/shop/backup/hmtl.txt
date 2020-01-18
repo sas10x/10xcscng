@@ -1,9 +1,9 @@
 <div class="container-fluid">
     <div class="row product-sec">
           <div class="col-lg-6 prod-left">
-              <h3 class="text-center">Deformed Bar</h3>
+              <h3>Deformed Bar</h3>
                 <div class="hero-image">
-                      <img src="assets/img/deformed-bar.jpg" class="img">
+                      <img src="assets/img/deformed-bar.jpg">
                 </div>
           </div>
 
@@ -37,33 +37,19 @@
                             <div class="size">
                                 <p class="label">Diameter:</p>
                                 <ul>
-                                    <li *ngFor="let diameter of diameters; trackBy: trackById"
+                                    <li *ngFor="let diameter of diameters"
                                     [class.selected]="diameter === selectedDiameter"
                                     (click)="onSelect3(diameter)">{{diameter.name}}</li>     
                                 </ul>
                             </div>
                       <br>
-                      <div >
-                            <div *ngIf="quantity; else noquantity" class="quantity">
-                                <button (click)="removeToCart(product)" class="btn btn-secondary">-</button>
-                                <h1>{{quantity}}</h1>
-                                <button (click)="addToCart(product)" class="btn btn-secondary">+</button>
-                            </div>
-                            <ng-template #noquantity>
-                                <div class="button-container">
-                                    <button (click)="addToCart(product)" class="primary">Add to Cart</button>
-                                </div>
-                            </ng-template>
+
+                      <div class="add-prod">
+                            <a href="#">Add to Quote</a>
                       </div>
-                      <!-- <div class="col-lg-3 kristan">
-                          <button>+</button>
-                          <h1>{{quantity}}</h1>
-                          <button>-</button>
-                      </div> -->
                 </div>
           </div>
     </div>
 </div>
-
 
 <!-- PRODUCT ENDS HERE -->

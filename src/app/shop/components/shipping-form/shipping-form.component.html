@@ -1,0 +1,75 @@
+<div class="card">
+  <div class="card-body">
+  <h2>Address</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>First Name</label>
+        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Company</label>
+        <input type="text" formControlName="company" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.company.errors }" />
+        <div *ngIf="submitted && f.company.errors" class="invalid-feedback">
+            <div *ngIf="f.company.errors.required">Company is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Phone</label>
+        <input type="text" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+            <div *ngIf="f.phone.errors.required">Phone is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Province</label>
+        <!-- <select name="province" id="province" (change)="getCity($event.target.value)" class="form-control" required> -->
+        <select name="province" id="province" (change)="getCitys($event.target.value)" class="form-control" required>   
+          <option value=""></option>
+          <option *ngFor="let c of provinces" [value]=c.provinceId>
+            {{ c.provDesc }}
+          </option>
+        </select>
+        <!-- <div *ngIf="f.province.errors.required">Province is required</div> -->
+        <div *ngIf="submitted && f.province.errors" class="invalid-feedback">
+          <div *ngIf="f.province.errors.required">Title is required</div>
+      </div>
+      <div class="form-group">
+        <label>Street</label>
+        <input type="text" formControlName="street" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.street.errors }" />
+        <div *ngIf="submitted && f.street.errors" class="invalid-feedback">
+            <div *ngIf="f.street.errors.required">Street is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Barangay</label>
+        <input type="text" formControlName="barangay" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.barangay.errors }" />
+        <div *ngIf="submitted && f.barangay.errors" class="invalid-feedback">
+            <div *ngIf="f.barangay.errors.required">Barangay is required</div>
+        </div>
+      </div>
+      </div> 
+      <div class="form-group">
+        <label>City</label>
+        <select name="city" id="city" class="form-control" required>
+          <option value=""></option>
+          <option *ngFor="let d of cities" [value]="d.cityId">
+            {{ d.cityDesc }}
+          </option>
+        </select>
+        <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+          <div *ngIf="f.city.errors.required">City is required</div>
+      </div>
+      </div>   
+  </form>
+  </div>
+</div>

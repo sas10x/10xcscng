@@ -1,0 +1,54 @@
+<h1>Shopping Cart</h1>
+<div class="card" *ngIf="carts" style="width: 80%;">
+  <div class="card-body">
+    <p>
+      You have {{quantity}} items in your shopping cart.
+      <button *ngIf="carts" class="float-right btn btn-light btn-sm">Clear Shopping Cart</button>
+
+    </p>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th class="text-center" style="width: 230px">Quantity</th>
+        <th class="text-right" style="width: 200px">Price</th>
+        <th class="text-right" style="width: 200px">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cart of carts">
+        <td></td>
+        <td>
+          {{ cart.productName }}
+        </td>
+        <td class="text-center">
+          {{cart.quantity}}
+          <!-- <product-quantity [product]="item" [shopping-cart]="cart">
+          </product-quantity> -->
+        </td>
+        <td class="text-right">
+          {{ cart.price | currency:'PHP ':true }}
+        </td>
+        <td class="text-right">
+          {{ cart.total | currency:'PHP ':true }}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="text-right">{{ total | currency:'PHP':true }}</th>
+      </tr>
+      <tr>
+        <th colspan="4">
+          <a *ngIf="carts" routerLink="/shop/check-out" class="btn btn-primary">Check Out</a>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>

@@ -4,14 +4,16 @@ import { HttpClient } from '@angular/common/http';
 import { Grade } from '../model/grade';
 import { Length } from '../model/length';
 import { Diameter } from '../model/diameter';
+import { Province } from '../model/province';
+import { City } from '../model/city';
 
 
 const productsUrl = "http://localhost:5000/api/products?grade=";
 const lengthsUrl = "http://localhost:5000/api/products/lengths";
 const diametersUrl = "http://localhost:5000/api/products/diameters";
 const gradesUrl = "http://localhost:5000/api/products/grades";
-
-// api/products?grade=1&diameter=7&length=1
+const provincesUrl = "http://localhost:5000/api/products/provinces";
+const citysUrl = "http://localhost:5000/api/products/citys/";
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +37,13 @@ export class ProductService {
 
   getDiameters() {
     return this.http.get<Diameter[]>(diametersUrl);
+  }
+
+  getProvinces() {
+    return this.http.get<Province[]>(provincesUrl);
+  }
+
+  getCities(id) {
+    return this.http.get<City[]>(citysUrl + id);
   }
 }

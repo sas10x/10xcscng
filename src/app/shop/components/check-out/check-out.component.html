@@ -1,0 +1,28 @@
+<h2>Shipping</h2>
+<div class="row" *ngIf="carts">
+  <div class="col-6">
+    <app-shipping-form [cart]="carts"></app-shipping-form>
+  </div>
+  <div class="col-6">
+    <!-- <shopping-cart-summary [cart]="cartlines"></shopping-cart-summary> -->
+    <ng-container *ngIf="carts">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Order Summary</h4>
+            <p class="card-text">You have 100 items in your shopping cart</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let cart of carts">
+                {{cart.quantity}} x {{cart.productName}}
+                <div class="float-right">{{ cart.total | currency:'PHP':true}}</div>
+              </li>
+              <li class="list-group-item font-weight-bold">Total Price :
+                <div class="float-right">
+                    {{ total |  currency:'PHP':true}}
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </ng-container>
+  </div>
+</div>

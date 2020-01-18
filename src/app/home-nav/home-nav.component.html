@@ -6,7 +6,12 @@
           <span><a href="index.html">CEBU STEEL CORPORATION</a></span>
     </div>
     <div class="cart">
-        <fa-icon [icon]="faShoppingCart"></fa-icon>
+        <a class="nav-link" routerLink="/shop/cart">Quote
+            <fa-icon [icon]="faShoppingCart"></fa-icon>
+            <span class="badge badge-warning badge-pill" *ngIf="quantity">
+              {{quantity}}
+            </span>
+          </a>
     </div>
     <div class="menu">
           <div class="menu-close">

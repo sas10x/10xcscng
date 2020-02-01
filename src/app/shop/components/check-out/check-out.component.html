@@ -1,9 +1,5 @@
 <h2>Shipping</h2>
-<div class="row" *ngIf="carts">
-  <div class="col-6">
-    <app-shipping-form [cart]="carts"></app-shipping-form>
-  </div>
-  <div class="col-6">
+  <div class="col">
     <!-- <shopping-cart-summary [cart]="cartlines"></shopping-cart-summary> -->
     <ng-container *ngIf="carts">
         <div class="card">
@@ -21,8 +17,11 @@
                 </div>
               </li>
             </ul>
-          </div>
+            <div class="form-group right-hook">
+              <button class="btn btn-primary" >Place Order</button>
+            </div>
+          </div>  
         </div>
     </ng-container>
   </div>
-</div>
+

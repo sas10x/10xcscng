@@ -8,12 +8,14 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  
   formModel = {
     Email: '',
     Password: '',
     ConfirmPassword: '',
     UserName: '',
     DisplayName: '',
+    PhoneNumber: ''
   }
 
   constructor(public service: UserService, private toastr: ToastrService) { }

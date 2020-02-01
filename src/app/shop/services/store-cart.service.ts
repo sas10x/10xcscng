@@ -6,6 +6,7 @@ import { EffectsCartService } from './effects-cart.service';
 import { uuid } from './uuid';
 import { Order } from '../model/order';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,10 @@ export class StoreCartService {
   message = 0;
   total = 0;
   test = 0;
+  success = 0;
   sessionOrder: Order;
-  
-  constructor(private effectsService: EffectsCartService) {
+  backupOrder: Order;
+  constructor(private effectsService: EffectsCartService, private router: Router) {
     this.fetchAll()
    }
   private messageSource = new BehaviorSubject(0);
@@ -149,6 +151,27 @@ export class StoreCartService {
       this.changeTotal(this.total);
     }
 
+  }
+  placeOrder(total) {
+    const order = {orderId: this.sessionOrder.orderId, amount: total};
+    try {
+      this.effectsService.finalOrder(order).toPromise();
+      localStorage.setItem('storeObj', '');
+      this.backupOrder = this.sessionOrder;
+      this.sessionOrder = null;
+      this.success = 1;
+      this.changeMessage(0);
+      this.changeTotal(0);
+      this.carts = [];
+    }
+    catch (e) {
+      localStorage.setItem('storeObj', JSON.stringify(this.backupOrder));
+      this.success = 2;
+    }
+    if (this.success = 1)
+    {
+      this.router.navigateByUrl('/shop/success');
+    }
   }
   testAdd(prod: Product) {
     const postCart= {quantity: 1, price: prod.price, total: 0, product: prod.productId, order: this.sessionOrder.orderId};

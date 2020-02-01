@@ -2,6 +2,7 @@
     width: 100%;
     height: 60px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
+    
 }
 
 .nav.scrolled {
@@ -24,6 +25,8 @@
     font-size: 14px;
     font-weight: 300;
     letter-spacing: 4px;
+    color: #000000;
+    
 }
 
 .brand a:hover {
@@ -88,5 +91,9 @@
 .media-menu ul li {
     display: inline-block;
     padding-right: 10px;
+}
+
+.nav-link {
+    color: #000000;
 }
 

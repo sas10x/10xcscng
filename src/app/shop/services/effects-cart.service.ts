@@ -31,4 +31,8 @@ export class EffectsCartService {
   index(id) {
     return this.http.get<Cart[]>(this.cartUrl +'/'+ id);
   }
+
+  finalOrder(order) {
+    return this.http.put<Order>(this.ordersUrl + '/finish', order);
+  }
 }

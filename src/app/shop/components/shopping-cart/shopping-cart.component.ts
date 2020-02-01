@@ -27,14 +27,7 @@ export class ShoppingCartComponent implements OnInit {
   getTotal() {
     this.storeService.currentTotal.subscribe(total => this.total = total)
   }
-  // getCart() {
-  //   this.storeService.cart$
-  //     .subscribe(res => {
-  //       this.carts = res;
-  //       for (let cart in this.carts) 
-  //       {
-  //         this.total += this.carts[cart].total;
-  //       }
-  //     })
-  // }
+  placeOrder() {
+    this.storeService.placeOrder(this.total);
+  }
 }

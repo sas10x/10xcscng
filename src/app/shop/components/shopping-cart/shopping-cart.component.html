@@ -46,7 +46,7 @@
       </tr>
       <tr>
         <th colspan="4">
-          <a *ngIf="carts" routerLink="/shop/check-out" class="btn btn-primary">Check Out</a>
+          <a *ngIf="carts" (click)="placeOrder()" class="btn btn-primary">Send Quote</a>
         </th>
       </tr>
     </tfoot>

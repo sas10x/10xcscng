@@ -14,12 +14,12 @@ export class UserService {
   formModel = this.fb.group({
     UserName: ['', Validators.required],
     Email: ['', Validators.email],
-    DisplayName: [''],
+    DisplayName: ['', Validators.required],
     Passwords: this.fb.group({
       Password: ['', [Validators.required, Validators.minLength(4)]],
       ConfirmPassword: ['', Validators.required]
-    }, { validator: this.comparePasswords })
-
+    }, { validator: this.comparePasswords }),
+    PhoneNumber: ['', ],
   });
 
   comparePasswords(fb: FormGroup) {
@@ -37,7 +37,8 @@ export class UserService {
       UserName: this.formModel.value.UserName,
       Email: this.formModel.value.Email,
       DisplayName: this.formModel.value.DisplayName,
-      Password: this.formModel.value.Passwords.Password
+      Password: this.formModel.value.Passwords.Password,
+      PhoneNumber: this.formModel.value.PhoneNumber
     };
     console.log(body);
     return this.http.post(this.BaseURI + '/user/register', body);

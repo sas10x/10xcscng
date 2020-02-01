@@ -8,13 +8,14 @@ import { CheckOutComponent } from './components/check-out/check-out.component';
 import { ShippingFormComponent } from './components/shipping-form/shipping-form.component';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AuthGuard } from '../user/auth/auth.guard';
+import { OrderSuccessComponent } from './components/order-success/order-success.component';
 
 
 
 
 
 @NgModule({
-  declarations: [ShopComponent, ShoppingCartComponent, CheckOutComponent, ShippingFormComponent],
+  declarations: [ShopComponent, ShoppingCartComponent, CheckOutComponent, ShippingFormComponent, OrderSuccessComponent],
   imports: [
     HttpClientModule,
     CommonModule,
@@ -28,12 +29,19 @@ import { AuthGuard } from '../user/auth/auth.guard';
       },
       {
       path: 'cart',
-      component: ShoppingCartComponent
+      component: ShoppingCartComponent,
+      canActivate:[AuthGuard]
       }
       ,
       {
       path: 'check-out',
       component: CheckOutComponent,
+      canActivate:[AuthGuard]
+      }
+      ,
+      {
+      path: 'success',
+      component: OrderSuccessComponent,
       canActivate:[AuthGuard]
       }
   ])

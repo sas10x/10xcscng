@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         console.log(res.token);
         localStorage.setItem('token', res.token);
         form.resetForm();
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/shop/cart');
       },
       err => {
         //if (err.status == 400) {

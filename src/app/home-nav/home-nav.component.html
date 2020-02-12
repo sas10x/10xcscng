@@ -1,4 +1,4 @@
-<div class="nav">
+<!-- <div class="nav">
     <div class="menu-open">
         <fa-icon [icon]="faHamburger"></fa-icon>
     </div>
@@ -6,12 +6,32 @@
           <span><a href="index.html">CEBU STEEL CORPORATION</a></span>
     </div>
     <div class="cart">
-        <a class="nav-link" routerLink="/shop/cart">Quote
-            <fa-icon [icon]="faShoppingCart"></fa-icon>
-            <span class="badge badge-warning badge-pill" *ngIf="quantity">
-              {{quantity}}
-            </span>
-          </a>
+        <ul class="navbar-nav">
+            <a class="nav-link" routerLink="/shop/cart">Quote
+                  <fa-icon [icon]="faShoppingCart"></fa-icon>
+                  <span class="badge badge-warning badge-pill" *ngIf="quantity">
+                    {{quantity}}
+                  </span>
+              </a>
+        </ul>
+        <ul class="navbar-nav">
+            <ng-template #notLoggedInUser>
+              <li (click)="navbarCollapsed = false" class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['user/login']">
+                <span class="navFixes">Login</span>
+                       <i class="fa fa-sign-in" aria-hidden="true"></i>
+                  </a>
+              </li>
+            </ng-template>
+    
+            <li *ngIf="auth; else notLoggedInUser" ngbDropdown class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>KRISTAN</a>
+              <div ngbDropdownMenu (click)="navbarCollapsed = false" class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" [routerLink]="['myorders']">My Orders</a>
+                <a class="dropdown-item" (click)="logout()" [routerLink]="['/']">Logout</a>
+              </div>
+            </li>
+          </ul>
     </div>
     <div class="menu">
           <div class="menu-close">
@@ -33,4 +53,53 @@
                 </ul>
           </div>
     </div>
+</div> -->
+<div class="nav">
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" (click)="navbarCollapsed = false" [routerLink]="['/']">Cebu Steel Corporation
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+          </a>
+        <button class="navbar-toggler" (click)="navbarCollapsed = !navbarCollapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+          aria-controls="navbarsExampleDefault" [attr.aria-expanded]="!navbarCollapsed" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+        <div [ngbCollapse]="!navbarCollapsed" class="navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li (click)="navbarCollapsed = false" class="nav-item" [routerLinkActive]="['active']">
+              <a class="nav-link" [routerLink]="['/shop/cart']">
+                    <span class="navFixes hide-mobile"><fa-icon [icon]="faShoppingCart"></fa-icon></span>
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    <span class="badge badge-warning">{{quantity}}</span>
+                </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav kristan-center">
+            <li (click)="navbarCollapsed = false" class="nav-item" [routerLinkActive]="['active']">
+              <a class="nav-link" [routerLink]="['/shop']">
+                    Deformed Bars
+                </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <ng-template #notLoggedInUser>
+              <li (click)="navbarCollapsed = false" class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['user/login']">
+                <span class="navFixes">Login</span>
+                       <i class="fa fa-sign-in" aria-hidden="true"></i>
+                  </a>
+              </li>
+            </ng-template>
+            <li *ngIf= "auth; else notLoggedInUser" ngbDropdown class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle><fa-icon [icon]="faUser"></fa-icon></a>
+              <div ngbDropdownMenu (click)="navbarCollapsed = false" class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" [routerLink]="['shop/myorders']">My Orders</a>
+                <a class="dropdown-item" (click)="logout()" [routerLink]="['/']">Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 </div>

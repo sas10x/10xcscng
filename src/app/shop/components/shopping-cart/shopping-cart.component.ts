@@ -27,7 +27,7 @@ export class ShoppingCartComponent implements OnInit {
   getTotal() {
     this.storeService.currentTotal.subscribe(total => this.total = total)
   }
-  placeOrder() {
-    this.storeService.placeOrder(this.total);
-  }
+  // placeOrder() {
+  //   this.storeService.placeOrder(this.total);
+  // }
 }

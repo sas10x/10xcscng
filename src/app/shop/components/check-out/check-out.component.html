@@ -1,4 +1,4 @@
-<h2>Shipping</h2>
+
   <div class="col">
     <!-- <shopping-cart-summary [cart]="cartlines"></shopping-cart-summary> -->
     <ng-container *ngIf="carts">
@@ -18,7 +18,7 @@
               </li>
             </ul>
             <div class="form-group right-hook">
-              <button class="btn btn-primary" >Place Order</button>
+              <button class="btn btn-primary" (click)="placeOrder()">Place Quote</button>
             </div>
           </div>  
         </div>

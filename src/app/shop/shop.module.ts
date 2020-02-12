@@ -9,13 +9,15 @@ import { ShippingFormComponent } from './components/shipping-form/shipping-form.
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AuthGuard } from '../user/auth/auth.guard';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 
 
 
 
 @NgModule({
-  declarations: [ShopComponent, ShoppingCartComponent, CheckOutComponent, ShippingFormComponent, OrderSuccessComponent],
+  declarations: [ShopComponent, ShoppingCartComponent, CheckOutComponent, ShippingFormComponent, OrderSuccessComponent, MyOrdersComponent, OrderDetailsComponent],
   imports: [
     HttpClientModule,
     CommonModule,
@@ -29,10 +31,8 @@ import { OrderSuccessComponent } from './components/order-success/order-success.
       },
       {
       path: 'cart',
-      component: ShoppingCartComponent,
-      canActivate:[AuthGuard]
-      }
-      ,
+      component: ShoppingCartComponent
+      },
       {
       path: 'check-out',
       component: CheckOutComponent,
@@ -42,6 +42,12 @@ import { OrderSuccessComponent } from './components/order-success/order-success.
       {
       path: 'success',
       component: OrderSuccessComponent,
+      canActivate:[AuthGuard]
+      }
+      ,
+      {
+      path: 'myorders',
+      component: MyOrdersComponent,
       canActivate:[AuthGuard]
       }
   ])

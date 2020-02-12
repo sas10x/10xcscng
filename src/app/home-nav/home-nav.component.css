@@ -97,3 +97,9 @@
     color: #000000;
 }
 
+.kristan-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+

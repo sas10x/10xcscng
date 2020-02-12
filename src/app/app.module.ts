@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,11 +28,13 @@ import { HomeForbiddenComponent } from './home-forbidden/home-forbidden.componen
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot()
+    
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS,

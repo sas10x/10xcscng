@@ -6,6 +6,8 @@ import { Length } from '../model/length';
 import { Diameter } from '../model/diameter';
 import { Province } from '../model/province';
 import { City } from '../model/city';
+import { Order } from '../model/order';
+import { Cart } from '../model/cart';
 
 
 const productsUrl = "http://localhost:5000/api/products?grade=";
@@ -14,6 +16,9 @@ const diametersUrl = "http://localhost:5000/api/products/diameters";
 const gradesUrl = "http://localhost:5000/api/products/grades";
 const provincesUrl = "http://localhost:5000/api/products/provinces";
 const citysUrl = "http://localhost:5000/api/products/citys/";
+const cartUrl = "http://localhost:5000/api/carts";
+
+const ordersUrl = "http://localhost:5000/api/orders/";
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +50,13 @@ export class ProductService {
 
   getCities(id) {
     return this.http.get<City[]>(citysUrl + id);
+  }
+
+  getOrders() {
+    return this.http.get<Order[]>(ordersUrl);
+  }
+
+  getCarts(id) {
+    return this.http.get<Cart[]>(cartUrl +'/'+ id);
   }
 }

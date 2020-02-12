@@ -1,0 +1,66 @@
+<!-- <div class="col-1">
+
+</div>
+<div class="col">
+  <li class="list-group-item"><span class="font-weight-bold">Items:</span>
+    <div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let cart of carts">
+          {{cart.productName}} x {{cart.quantity}} ({{cart.price | currency:'PHP':true}})
+          <div class="float-right">{{cart.total | currency:'PHP':true}}</div>
+        </li>
+      </ul>
+    </div>
+  </li>
+</div> -->
+<div class="col-1"></div>
+<div class="col">
+<div class="list-group-item">
+  <span class="font-weight-bold">Order:</span>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Item</th>
+        <th scope="col">SubTotal</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cart of carts">
+        <th></th>
+        <th>{{cart.productName}} x {{cart.quantity}} ({{cart.price | currency:'PHP':true}})</th>
+        <th>{{cart.total | currency:'PHP':true}}</th>
+        <th></th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+
+
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Date</th>
+      <th scope="col">Total</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let order of orders">
+      <th scope="row"></th>
+      <td>{{order.date | date}}</td>
+      <td>{{order.amount}}</td>
+      <td><button (click)="getCarts(order.orderId)">Click me!</button></td>
+    </tr>
+  </tbody>
+</table> -->
+
+
+
+
+

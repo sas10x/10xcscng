@@ -23,6 +23,6 @@ export class CheckOutComponent implements OnInit {
     this.storeService.currentTotal.subscribe(total => this.total = total)
   }
   placeOrder() {
-    
+    this.storeService.placeOrder(this.total);
   }
 }

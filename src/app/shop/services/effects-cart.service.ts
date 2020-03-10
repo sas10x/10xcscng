@@ -10,6 +10,9 @@ export class EffectsCartService {
   private readonly cartUrl = "http://localhost:5000/api/carts";
   private readonly ordersUrl = "http://localhost:5000/api/orders";
 
+  // private readonly cartUrl = "http://api.cebusteel.ph/api/carts";
+  // private readonly ordersUrl = "http://api.cebusteel.ph/api/orders";
+
   constructor(private http: HttpClient) { }
 
   create(cart) {

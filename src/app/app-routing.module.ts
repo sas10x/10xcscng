@@ -17,9 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    loadChildren: () => import('./about/about.module').then(m => m.AboutModule),
-    canActivate:[AuthGuard],
-    data :{permittedRoles:['admin']}
+    loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
   },
   {
     path: 'contact',
@@ -32,6 +30,10 @@ const routes: Routes = [
   {
     path: 'shop',
     loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
+  },
+  {
+    path: '87263BAE-BCCF-4032-5007-08D7723026B6',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),canActivate:[AuthGuard],data:{permittedRoles:['admin']}
   }
 ];
 

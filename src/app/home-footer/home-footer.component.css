@@ -1,5 +1,9 @@
+.kristancolor-black{
+    color: black;
+}
 .footer {
-    position: absolute;
+    /* position: absolute; */
+    overflow: auto;
     padding: 30px 0;
     background: #f7f6f2;
 }

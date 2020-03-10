@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  user: User;
   formModel = {
     Email: '',
     Password: ''
@@ -19,14 +21,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.service.formModel.reset();
-    if (localStorage.getItem('token') != null)
-    this.router.navigateByUrl('/');
+    // if (localStorage.getItem('token') != null)
+    // this.router.navigateByUrl('/');
   }
   onSubmit(form: NgForm) {
     console.log(form.value);
     this.service.login(form.value).subscribe(
       (res: any) => {
-        console.log(res.token);
+        this.user = res;
+        this.service.changeUser(this.user);
+        //localStorage.setItem('user', this.user);
+        localStorage.setItem('tawo', JSON.stringify(res));
         localStorage.setItem('token', res.token);
         form.resetForm();
         this.router.navigateByUrl('/shop/cart');

@@ -6,6 +6,46 @@ html, body {
     font-weight: lighter;
     color: #000000;
 }
+.media {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    margin-right: 20px;
+}
+
+.media ul {
+    list-style: none;
+}
+
+.media ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+@media(max-width: 900px) {
+    .hero-image {
+          display: none!important;
+    }
+    .kristan-center {
+        position: static!important; 
+        left: 0!important;
+        transform: translateX(0%)!important;
+  }
+    .media {
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, 0);
+    }
+    .media ul {
+          margin-right: 0;
+    }
+}
+.black {
+    background-color: black;
+}
+.btn-kristan {
+    border-radius: none!important;
+  }
 
 
 

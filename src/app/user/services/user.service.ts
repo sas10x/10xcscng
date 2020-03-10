@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { CustomValidators } from './custom-validators';
+import { BehaviorSubject } from 'rxjs';
+import { User } from '../model/user';
 
 
 @Injectable({
@@ -9,14 +12,23 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class UserService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
+  private readonly _users = new BehaviorSubject<User>(null);
+  readonly users$ = this._users.asObservable();
+
   readonly BaseURI = 'http://localhost:5000/api';
+  // readonly BaseURI = 'http://api.cebusteel.ph/api';
   
   formModel = this.fb.group({
     UserName: ['', Validators.required],
     Email: ['', Validators.email],
     DisplayName: ['', Validators.required],
     Passwords: this.fb.group({
-      Password: ['', [Validators.required, Validators.minLength(4)]],
+      Password: ['', [Validators.required, Validators.minLength(6)],
+      CustomValidators.patternValidator(/\d/, {hasNumber: true}),
+      CustomValidators.patternValidator(/[A-Z]/, {hasCapitalCase: true}),
+      CustomValidators.patternValidator(/[a-z]/, {hasSmallCase: true}),
+      CustomValidators.patternValidator(/[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,{hasSpecialCharacters: true}),
+    ],
       ConfirmPassword: ['', Validators.required]
     }, { validator: this.comparePasswords }),
     PhoneNumber: ['', ],
@@ -31,15 +43,15 @@ export class UserService {
         confirmPswrdCtrl.setErrors(null);
     }
   }
-  register() {
-    console.log(this.formModel.value);
-    var body = {
-      UserName: this.formModel.value.UserName,
-      Email: this.formModel.value.Email,
-      DisplayName: this.formModel.value.DisplayName,
-      Password: this.formModel.value.Passwords.Password,
-      PhoneNumber: this.formModel.value.PhoneNumber
-    };
+  register(body) {
+    // console.log(this.formModel.value);
+    // var body = {
+    //   Username: this.formModel.value.UserName,
+    //   Email: this.formModel.value.Email,
+    //   DisplayName: this.formModel.value.DisplayName,
+    //   Password: this.formModel.value.Passwords.Password,
+    //   PhoneNumber: this.formModel.value.PhoneNumber
+    // };
     console.log(body);
     return this.http.post(this.BaseURI + '/user/register', body);
   }
@@ -71,4 +83,7 @@ export class UserService {
     return isMatch;
   }
 
+  changeUser(user: User) {
+      this._users.next(user);
+  }
 }

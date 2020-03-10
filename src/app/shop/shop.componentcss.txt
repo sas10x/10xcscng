@@ -182,7 +182,7 @@ p.short {
 
   .hero-image-shop {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -241,6 +241,7 @@ img {
     padding: 16px 24px;
     margin-right: 24px;
     border-radius: 50px;
+    flex: 1;
     text-transform: uppercase;
     font-weight: 700;
     font-family: Lato;
@@ -251,57 +252,3 @@ img {
 .kristan-mid {
   text-align: center;
 }
-
-/* flexbox */
-
-.kristancontainer {
-    /* background-color: black; */
-    display: flex;
-    justify-content: center;
-    margin-left: 10px;
-    margin-right: 10px;
-    /* height: 100vh; */
-  }
-  
-.item {
-    /* background-color: #f1425d; */
-    margin-top: 10%; 
-    margin-bottom: 10%;
-    /* color: #fff; */
-    font-size: 40px;
-    width: 50%; 
-    align-self: auto;
-    
-  }
-.i2 {
-    /* align-self: flex-start; */
-    font-size: 18px;
-    margin-top: 14%;
-}
-.text-div {
-    text-align: center;
-}
-.image-div {
-      width: 50%;
-      overflow: auto;
-      margin: 0 auto;
-  }
-.kristanimg {
-    width: 100%;
-    height: auto;
-    margin: 0 auto!important;
-}
-  @media(max-width: 900px) {
-    .kristancontainer {
-        flex-direction: column;
-      }
-      .item {
-        width: 100%;
-      }
-      .image-div{ 
-        width: 100%;
-      }
-      .i2 {
-        margin-top: 10%!important;
-      }
-  }

@@ -17,8 +17,16 @@ const gradesUrl = "http://localhost:5000/api/products/grades";
 const provincesUrl = "http://localhost:5000/api/products/provinces";
 const citysUrl = "http://localhost:5000/api/products/citys/";
 const cartUrl = "http://localhost:5000/api/carts";
-
 const ordersUrl = "http://localhost:5000/api/orders/";
+
+// const productsUrl = "http://api.cebusteel.ph/api/products?grade=";
+// const lengthsUrl = "http://api.cebusteel.ph/api/products/lengths";
+// const diametersUrl = "http://api.cebusteel.ph/api/products/diameters";
+// const gradesUrl = "http://api.cebusteel.ph/api/products/grades";
+// const provincesUrl = "http://api.cebusteel.ph/api/products/provinces";
+// const citysUrl = "http://api.cebusteel.ph/api/products/citys/";
+// const cartUrl = "http://api.cebusteel.ph/api/carts";
+// const ordersUrl = "http://api.cebusteel.ph/api/orders/";
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +62,10 @@ export class ProductService {
 
   getOrders() {
     return this.http.get<Order[]>(ordersUrl);
+  }
+
+  getAllOrders() {
+    return this.http.get<Order[]>(ordersUrl+'all');
   }
 
   getCarts(id) {

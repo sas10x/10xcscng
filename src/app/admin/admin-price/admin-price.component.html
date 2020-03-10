@@ -1,0 +1,30 @@
+<div class="container kristan-price">
+    <div class="py-5 text-center">
+      <h2>Change Price</h2>
+      <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+    </div>
+    <ul class="heroes">
+        <li class="h3height" *ngFor="let grade of grades"
+          [class.selected]="grade === selectedGrade"
+          (click)="onSelect(grade)">
+          <span class="badge">{{grade.varGradeId}}</span> {{grade.name}}
+        </li>
+    </ul>   
+    <div *ngIf="selectedGrade" class="kristan-discount form-group">
+        <form #f="ngForm" (ngSubmit)="save(f.value)">
+            <div>
+                <h3>Grade {{selectedGrade.name | uppercase}}</h3>     
+            </div>
+            <div class="form-group row">
+                <label for="pursinto" class="col-1 col-form-label">Percent</label>
+                <div class="col-2">
+                    <input class="form-control" name="pursinto" type="number" id="pursinto" ngModel>
+                </div>
+            </div>
+            <button [disabled]="!f.valid" class="btn btn-primary">Save</button>
+        </form>  
+    </div>
+</div>
+
+
+  

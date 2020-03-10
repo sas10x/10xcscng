@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row product-sec">
+          <div class="col-lg-6 prod-left">
+              <h3 class="kristan-mid">Deformed Bar</h3>
+                <div class="hero-image-shop">
+                      <img src="assets/img/deformed-bar.jpg" class="img">
+                </div>
+          </div>
+
+          <div class="col-lg-6 prod-right">
+                <div class="prod-opt">
+                    <div *ngIf="product; else nodata">
+                        <h3 id="prod-name">{{product.name}}</h3>
+                        <p id="price">{{product.price | currency:"PHP "}}</p>
+                    </div>
+                    <ng-template #nodata>
+                        <div class="price-listing">
+                           <span class="noprice">Select GRADE, LENGTH and DIAMETER</span> <br>
+                       </div>
+                     </ng-template>
+                            <div class="size">
+                                  <p class="label">Grade:</p><p class="short">Grd:</p>
+                                  <ul>     
+                                    <li *ngFor="let grade of grades"
+                                    [class.selected]="grade === selectedGrade"
+                                    (click)="onSelect(grade)">{{grade.name}}</li>     
+                                  </ul>
+                            </div>
+                            <div class="size">
+                                <p class="label">Length:</p><p class="short">Len:</p>
+                                <ul>     
+                                    <li *ngFor="let length of lengths"
+                                    [class.selected]="length === selectedLength"
+                                    (click)="onSelect2(length)">{{length.name}}</li>     
+                                  </ul>
+                            </div>
+                            <div class="size">
+                                <p class="label">Diameter:</p><p class="short">Dia:</p>
+                                <ul>
+                                    <li *ngFor="let diameter of diameters; trackBy: trackById"
+                                    [class.selected]="diameter === selectedDiameter"
+                                    (click)="onSelect3(diameter)">{{diameter.name}}</li>     
+                                </ul>
+                            </div>
+                      <br>
+                      <div >
+                            <div *ngIf="quantity; else noquantity" class="quantity">
+                                <button (click)="removeToCart(product)" class="btn btn-secondary">-</button>
+                                <h1>{{quantity}}</h1>
+                                <button (click)="addToCart(product)" class="btn btn-secondary">+</button>
+                            </div>
+                            <ng-template #noquantity>
+                                <div class="button-container">
+                                    <button (click)="addToCart(product)" class="btn btn-dark btn-kristan">Add to Cart</button>
+                                </div>
+                            </ng-template>
+                      </div>
+                      <!-- <div class="col-lg-3 kristan">
+                          <button>+</button>
+                          <h1>{{quantity}}</h1>
+                          <button>-</button>
+                      </div> -->
+                </div>
+          </div>
+    </div>
+</div>
+
+
+<!-- PRODUCT ENDS HERE -->

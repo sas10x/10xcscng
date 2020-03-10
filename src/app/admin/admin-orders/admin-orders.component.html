@@ -1,0 +1,31 @@
+<h1 class="text-center">My Orders</h1>
+<ng-container *ngIf="orders">
+    <ng-container *ngIf="orders.length > 0; else noOrder">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Date</th>
+                <th scope="col">Name</th>
+                <th scope="col">Number/Email</th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                <th scope="row"></th>
+                <td>{{order.date | date}}</td>
+                <td>{{order.name}}</td>
+                <td>{{order.phone}}/{{order.email}}</td>
+                <td>{{order.amount}}</td>
+                <td><button (click)="getCarts(order.orderId)">View</button></td>
+              </tr>
+            </tbody>
+        </table>
+    </ng-container>
+    <ng-template #noOrder>No Order so far.</ng-template>
+</ng-container>
+<ng-container *ngIf="carts">
+  <app-admin-order-details [carts]="carts"></app-admin-order-details>
+</ng-container>

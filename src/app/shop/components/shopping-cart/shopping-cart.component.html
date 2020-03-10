@@ -46,8 +46,17 @@
       </tr>
       <tr>
         <th colspan="4">
-          <a *ngIf="carts" [routerLink]="['/shop/check-out']" class="btn btn-primary">Submit for Quotation</a>
+          <!-- <a *ngIf="carts" [routerLink]="['/shop/check-out']" class="btn btn-primary black">Submit for Quotation</a> -->
+          <!-- <a *ngIf="carts" class="btn btn-dark" [routerLink]="['/shop/check-out']" >Order More</a> -->
+          <!-- <button *ngIf="carts" (click)="submit()" class="btn-dark">Submit for Quotation</button> -->
         </th>
+        <ng-template [ngIf]="carts" [ngIfElse]="loading">
+          <a class="btn btn-dark" [routerLink]="['/shop/check-out']" >Submit for Quotation</a>
+       </ng-template>
+       
+       <ng-template #loading>
+           <div>Empty Cart</div>
+       </ng-template>
       </tr>
     </tfoot>
   </table>

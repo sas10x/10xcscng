@@ -45,13 +45,13 @@
           <br>
           <div >
                 <div *ngIf="quantity; else noquantity" class="quantity">
-                    <button (click)="removeToCart(product)" class="btn btn-secondary">-</button>
+                    <button (click)="removeToCart()" class="btn btn-secondary">-</button>
                     <h1>{{quantity}}</h1>
-                    <button (click)="addToCart(product)" class="btn btn-secondary">+</button>
+                    <button (click)="addToCart()" class="btn btn-secondary">+</button>
                 </div>
                 <ng-template #noquantity>
                     <div class="button-container">
-                        <button (click)="addToCart(product)" class="btn btn-dark btn-kristan">Add to Cart</button>
+                        <button (click)="addToCart()" class="btn btn-dark btn-kristan">Add to Cart</button>
                     </div>
                 </ng-template>
           </div>

@@ -26,7 +26,7 @@ import { HomeForbiddenComponent } from './home-forbidden/home-forbidden.componen
   ],
   imports: [
     HttpClientModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,

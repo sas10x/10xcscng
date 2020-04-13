@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../shared/services/user/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CustomValidators } from '../services/custom-validators';
+import { CustomValidators } from '../../shared/services/user/custom-validators';
 
 @Component({
   selector: 'app-registration',

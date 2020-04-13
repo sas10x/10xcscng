@@ -1,4 +1,5 @@
-import { Grade } from 'src/app/shop/model/grade';
+import { Grade } from '../shop/grade';
+
 
 export class Discount {
     public discountId?: number;

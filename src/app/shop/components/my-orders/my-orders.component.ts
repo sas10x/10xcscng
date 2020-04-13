@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from '../../model/order';
-import { ProductService } from '../../services/product.service';
-import { Cart } from '../../model/cart';
+
+import { ProductService } from '../../../shared/services/shop/product.service';
+import { Order } from 'src/app/shared/models/shop/order';
+import { Cart } from 'src/app/shared/models/shop/cart';
 
 @Component({
   selector: 'app-my-orders',

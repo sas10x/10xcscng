@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Discount } from '../model/Discount';
-import { Grade } from 'src/app/shop/model/grade';
-import { AdminService } from '../services/admin.service';
+import { Discount } from 'src/app/shared/models/admin/discount';
+import { Grade } from 'src/app/shared/models/shop/grade';
+import { AdminService } from 'src/app/shared/services/admin/admin.service';
+
 
 @Component({
   selector: 'app-admin-price',

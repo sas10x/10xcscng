@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { CustomValidators } from './custom-validators';
 import { BehaviorSubject } from 'rxjs';
-import { User } from '../model/user';
+
+import { map } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
+import { User } from '../../models/user/user';
 
 
 @Injectable({
@@ -11,7 +14,10 @@ import { User } from '../model/user';
 })
 export class UserService {
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, @Inject(PLATFORM_ID) private platformId) 
+  { 
+    this.fetchAll()
+  }
   private readonly _users = new BehaviorSubject<User>(null);
   readonly users$ = this._users.asObservable();
 
@@ -33,6 +39,14 @@ export class UserService {
     }, { validator: this.comparePasswords }),
     PhoneNumber: ['', ],
   });
+
+  get user(): User {
+    return this._users.getValue();
+  }
+
+  set user(val: User) {
+    this._users.next(val);
+  }
 
   comparePasswords(fb: FormGroup) {
     let confirmPswrdCtrl = fb.get('ConfirmPassword');
@@ -70,7 +84,9 @@ export class UserService {
 
   roleMatch(allowedRoles): boolean {
     var isMatch = false;
-    var payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+    // var payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+    var payLoad = JSON.parse(window.atob(this.user.token.split('.')[1]));
+    console.log('ROLEMATCH');
     console.log(payLoad);
     var userRole = payLoad.roles;
     console.log(userRole);
@@ -85,5 +101,22 @@ export class UserService {
 
   changeUser(user: User) {
       this._users.next(user);
+  }
+
+  async getUser() {
+    console.log('KRISTAN');
+    console.log(this.user);
+    let token = this.user.token;
+    return token
+  }
+  async fetchAll() {
+    if (isPlatformBrowser(this.platformId)) {
+      let tawo = localStorage.getItem('tawo');
+      if (tawo)  {
+        this.user = JSON.parse(localStorage.getItem('tawo'));
+        this.changeUser(this.user);
+      }
+    }
+    
   }
 }

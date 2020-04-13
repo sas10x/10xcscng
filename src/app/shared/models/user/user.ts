@@ -3,4 +3,5 @@ export class User {
     public userName?: string;
     public image?: string;
     public role?: string;
+    public token?: string;
 }

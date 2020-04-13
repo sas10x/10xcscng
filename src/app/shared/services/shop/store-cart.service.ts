@@ -1,12 +1,16 @@
-import { Injectable } from '@angular/core';
-import { Product } from '../model/product';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+
 import { BehaviorSubject } from 'rxjs';
-import { Cart } from '../model/cart';
+
 import { EffectsCartService } from './effects-cart.service';
 import { uuid } from './uuid';
-import { Order } from '../model/order';
+
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Order } from '../../models/shop/order';
+import { Cart } from '../../models/shop/cart';
+import { Product } from '../../models/shop/product';
+
 
 @Injectable({
   providedIn: 'root'

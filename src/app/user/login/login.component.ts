@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../shared/services/user/user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { User } from '../model/user';
+import { User } from 'src/app/shared/models/user/user';
+
 
 @Component({
   selector: 'app-login',

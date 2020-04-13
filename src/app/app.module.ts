@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './user/auth/auth.interceptor';
 import { HomeForbiddenComponent } from './home-forbidden/home-forbidden.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HomeForbiddenComponent } from './home-forbidden/home-forbidden.componen
     HomeForbiddenComponent
   ],
   imports: [
+    SharedModule,
     HttpClientModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Grade } from 'src/app/shop/model/grade';
-import { Discount } from '../model/Discount';
+import { Grade } from '../../models/shop/grade';
+import { Discount } from '../../models/admin/discount';
+
 
 const gradesUrl = "http://localhost:5000/api/products/grades";
 const discountsUrl = "http://localhost:5000/api/discounts";

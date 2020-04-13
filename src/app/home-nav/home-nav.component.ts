@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { faCoffee, faHamburger, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
-import { StoreCartService } from '../shop/services/store-cart.service';
-import { Cart } from '../shop/model/cart';
-import { UserService } from '../user/services/user.service';
-import { User } from '../user/model/user';
+import { StoreCartService } from '../shared/services/shop/store-cart.service';
+
+import { UserService } from '../shared/services/user/user.service';
+
 import { Router } from '@angular/router';
+import { Cart } from '../shared/models/shop/cart';
+import { User } from '../shared/models/user/user';
+
 
 @Component({
   selector: 'app-home-nav',

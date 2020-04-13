@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../model/product';
+
 import { HttpClient } from '@angular/common/http';
-import { Grade } from '../model/grade';
-import { Length } from '../model/length';
-import { Diameter } from '../model/diameter';
-import { Province } from '../model/province';
-import { City } from '../model/city';
-import { Order } from '../model/order';
-import { Cart } from '../model/cart';
+import { Product } from '../../models/shop/product';
+import { Grade } from '../../models/shop/grade';
+import { Length } from '../../models/shop/length';
+import { Diameter } from '../../models/shop/diameter';
+import { Province } from '../../models/shop/province';
+import { City } from '../../models/shop/city';
+import { Order } from '../../models/shop/order';
+import { Cart } from '../../models/shop/cart';
 
 
 const productsUrl = "http://localhost:5000/api/products?grade=";

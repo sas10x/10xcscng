@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from './services/product.service';
-import { Length } from './model/length';
-import { Grade } from './model/grade';
-import { Diameter } from './model/diameter';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { ProductService } from '../shared/services/shop/product.service';
+
 import { switchMap } from 'rxjs/operators';
-import { Product } from './model/product';
-import { StoreCartService } from './services/store-cart.service';
-import { Order } from './model/order';
-import { Cart } from './model/cart';
+
+import { StoreCartService } from '../shared/services/shop/store-cart.service';
+
+import { isPlatformBrowser } from '@angular/common';
+import { Grade } from '../shared/models/shop/grade';
+import { Length } from '../shared/models/shop/length';
+import { Diameter } from '../shared/models/shop/diameter';
+import { Order } from '../shared/models/shop/order';
+import { Cart } from '../shared/models/shop/cart';
+import { Product } from '../shared/models/shop/product';
 
 @Component({
   selector: 'app-shop',
@@ -30,7 +34,7 @@ export class ShopComponent implements OnInit {
 
   product: Product;
 
-  constructor(private productService: ProductService, private storeService: StoreCartService) { }
+  constructor(private productService: ProductService, private storeService: StoreCartService, @Inject(PLATFORM_ID) private platformId) { }
 
   ngOnInit() {
     this.createOrder();
@@ -39,6 +43,7 @@ export class ShopComponent implements OnInit {
     this.getDiameters();
     this.getCart();
   }
+  
   getCart() {
     this.storeService.cart$.subscribe(res => {
       this.carts = res;
@@ -67,10 +72,12 @@ export class ShopComponent implements OnInit {
     return item.id;
   }
   createOrder() {
-    this.storeService.createOrder();
-    let cartId = localStorage.getItem('storeObj');
-    if (cartId) {this.sessionOrder = JSON.parse(localStorage.getItem('storeObj'));}
-    console.log(this.sessionOrder);
+    if (isPlatformBrowser(this.platformId)) {
+      this.storeService.createOrder();
+      let cartId = localStorage.getItem('storeObj');
+      if (cartId) {this.sessionOrder = JSON.parse(localStorage.getItem('storeObj'));}
+      console.log(this.sessionOrder);
+    }
   }
   getGrades() {
     this.productService.getGrades().subscribe(response => {this.grades = response;console.log(this.grades)});

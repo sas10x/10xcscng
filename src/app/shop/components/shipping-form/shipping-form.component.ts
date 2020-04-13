@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Province } from '../../model/province';
-import { City } from '../../model/city';
-import { Cart } from '../../model/cart';
-import { ProductService } from '../../services/product.service';
+
+import { ProductService } from '../../../shared/services/shop/product.service';
+import { Province } from 'src/app/shared/models/shop/province';
+import { City } from 'src/app/shared/models/shop/city';
+import { Cart } from 'src/app/shared/models/shop/cart';
 
 @Component({
   selector: 'app-shipping-form',
